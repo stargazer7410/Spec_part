@@ -1,0 +1,6 @@
+{
+    "job_config_path": "config/job_params.json",
+    "job_registry": {
+        "thyme-care": "python.jobs.thyme-care"
+    }
+}

@@ -1,0 +1,1 @@
+SELECT * FROM thyme_care_table;

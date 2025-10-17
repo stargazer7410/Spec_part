@@ -1,9 +1,1 @@
-{
-  "job_name": "thyme-care",
-  "folder_name": "inbound/thyme-care/filename.csv",
-  "job_registry": [
-    "thyme-care",
-    "sales_reporting",
-    "inventory_management"
-  ]
-}
+{"thyme-care": {"param1": "value1"}}

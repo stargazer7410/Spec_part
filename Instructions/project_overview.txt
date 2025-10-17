@@ -1,0 +1,97 @@
+ Copilot Instructions for New Chat
+📁 Project Name
+Spec_part
+
+🧠 Purpose
+Automate client-specific data processing using:
+
+Azure Data Factory (ADF) for orchestration
+Databricks for execution
+Modular Python jobs for logic
+Dynamic SQL for querying
+Cloud-agnostic observability via Azure Monitor or GCP Cloud Monitoring
+
+
+🚀 Workflow Summary
+
+ADF triggers Databricks with:
+
+file_directory
+filename
+cloud_provider (e.g., azure, gcp)
+
+
+main.py receives these arguments
+Loads config from config/clients/{filename}.json
+Dynamically imports and runs the job module from python/jobs/{filename}.py
+Job module:
+
+Executes SQL from sql/{filename}.sql
+Processes rows with error handling
+Logs events using cloud-specific logger
+Saves failed rows to ADLS or GCP Storage (future enhancement)
+
+
+
+
+📁 Folder Structure
+Spec_part/
+├── main.py
+├── config/
+│   ├── clients/
+│   │   └── thyme-care.json
+│   └── job_params.json
+├── enhancements/
+│   └── README.txt
+├── python/
+│   ├── jobs/
+│   │   └── thyme_care.py
+│   └── utils/
+│       ├── param_loader.py
+│       ├── error_handler.py
+│       ├── log_manager.py
+│       ├── azure_monitor.py
+│       ├── gcp_monitor.py
+│       └── __init__.py
+├── sql/
+│   └── thyme-care.sql
+├── Instructions/
+│   ├── project_overview.txt
+│   └── developer_onboarding.txt
+├── README.md
+
+
+✅ Key Features
+
+Config-driven job execution
+Dynamic SQL with parameter substitution
+Row-level error handling
+Cloud-agnostic logging via log_manager.py
+Modular job design for easy extension
+Developer documentation and onboarding
+
+
+🧪 Runtime Parameters
+Passed from ADF to Databricks:
+Shellpython main.py <file_directory> <filename> <cloud_provider>Show more lines
+Example:
+Shellpython main.py /data/clients thyme-care azureShow more lines
+
+🌐 Cloud Provider Setup
+Set the environment variable CLOUD_PROVIDER dynamically via Databricks or ADF:
+
+Azure: CLOUD_PROVIDER=azure
+GCP: CLOUD_PROVIDER=gcp
+
+This is used by log_manager.py to route logs to the appropriate cloud utility.
+
+📘 Developer Onboarding Summary
+
+Clone repo
+Create virtual environment
+Install dependencies
+Set CLOUD_PROVIDER
+Run main.py with required arguments
+Add new jobs in python/jobs/ and SQL in sql/
+Update config in config/clients/
+Project automates client-specific data processing using cloud-agnostic Python jobs triggered by ADF and executed in Databricks.

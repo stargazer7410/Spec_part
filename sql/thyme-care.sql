@@ -1,1 +1,1 @@
-SELECT * FROM thyme_care_table;
+SELECT * FROM patients WHERE active = 1;

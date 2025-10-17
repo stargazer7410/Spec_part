@@ -1,0 +1,1 @@
+Setup: Clone repo, set CLOUD_PROVIDER env variable, run main.py with args. Add new jobs in python/jobs and configs in config/clients.
